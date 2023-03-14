@@ -7,27 +7,26 @@ galleryContainer.insertAdjacentHTML("afterbegin", galleryMarkup);
 function createGalleryItems(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
-      return `<a class="gallery__item gallery__link" href="${original}">
-  <img class="gallery__image" src="${preview}" alt="${description}" />
+      return `<a class="gallery__link" href="${original}">
+  <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" />
 </a>`;
     })
     .join("");
 }
 
-galleryEL.addEventListener("click", onClickImg);
+galleryContainer.addEventListener("click", onClickImg);
 
 function onClickImg(event) {
   event.preventDefault();
-  const isGalleryLink = event.target.classList.contains("gallery__link");
+  const isGalleryImage = event.target.classList.contains("gallery__image");
 
-  if (!isGalleryLink) {
+  if (!isGalleryImage) {
     return;
   }
-
   const watchEl = event.target;
   removeActiveLinkClass();
   addActiveLinkClass(watchEl);
-  // console.log(watchEl);
+  console.log(watchEl);
 }
 
 function removeActiveLinkClass() {
