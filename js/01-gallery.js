@@ -23,10 +23,16 @@ function onClickImg(event) {
   if (!isGalleryImage) {
     return;
   }
-  const watchEl = event.target;
-  removeActiveLinkClass();
-  addActiveLinkClass(watchEl);
-  console.log(watchEl);
+
+  const instance = basicLightbox.create(`<img class="gallery__image"
+   src="${event.target.dataset.source}"</img>`);
+
+  instance.show(instance);
+
+  // const watchEl = event.target;
+  // removeActiveLinkClass();
+  // addActiveLinkClass(watchEl);
+  // console.log(watchEl);
 }
 
 function removeActiveLinkClass() {
