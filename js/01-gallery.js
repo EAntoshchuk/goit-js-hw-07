@@ -27,7 +27,16 @@ function onClickImg(event) {
   const instance = basicLightbox.create(`<img class="gallery__image"
    src="${event.target.dataset.source}"</img>`);
 
-  instance.show(instance);
+  instance.show();
+
+  document.addEventListener("keydown", (event) => {
+    console.log("key: ", event.key);
+    console.log("code: ", event.code);
+
+    if (event.key === "Escape") {
+      instance.close();
+    }
+  });
 
   // const watchEl = event.target;
   // removeActiveLinkClass();
